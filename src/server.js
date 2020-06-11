@@ -4,6 +4,9 @@ const axios = require('axios')
 const server= express();
 
 
+
+server.use(express.json());
+
 server.use(express.static("public"));
 
 server.use(express.urlencoded({extended: true}))
@@ -22,23 +25,45 @@ nunjucks.configure("src/views", {
 });
 
 
-server.get('/', (req, res)=>{
+server.get('/', async (req, res)=>{
 
-    const request =axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=ok%20dog&type=video&key=AIzaSyAZXCvJRJIgbJyn1f-gRp3dW4E23oruE7A`)
+    return res.render("index.html") 
+          
+})
+
+
+server.post('/send',  (req,res)=>{
+    const search= req.body.search
+    const request = axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${search}%20dog&type=video&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`)
     .then(function(response){
-        console.log(response.data.nextPageToken);
+        
+        const pageToken= response.data.nextPageToken; 
+        
         for(var i = 1; i<=10; i++){           
-            console.log(response.data.items[i]);
-        }
-        
-        
-        
-    })
+            const title = [response.data.items[i].snippet.title]
+             
 
-    return res.render("index.html")
-  
-       
+            
+            console.log(title[0]);
+        }
+
+        
+        
+        
+
+    })
+    .catch(error => {
+        console.log(error)
+      })
+
     
+      console.log(request);
+      
+    
+
+    return res.render('search-results.html', )
+
+
 })
 
 server.listen(3000)

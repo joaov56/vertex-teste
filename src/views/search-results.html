@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste-Vertex</title>
+
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/search-results.css">
+</head>
+<body>
+    {% for place in places %}
+    <div class="card">
+        <img src="{{video.thumb}}" alt="Papersider">
+        <h1>{{video.title}}</h1>
+        <h3>{{place.like}}</h3>
+        <h3>{{video.deslike}}</h3>
+        <p>{{video.views}}</p>
+        <p>{{video.description}}</p>
+
+    </div>
+    {% endfor %}
+    
+</body>
+</html>
