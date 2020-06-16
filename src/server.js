@@ -23,12 +23,9 @@ server.get("/", async (req, res) => {
 
 server.post("/send", (req, res) => {
   const search = req.body.search;
-  console.log(req.body);
-  console.log(search);
 
   const request = axios
     .get(
-      // `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${search}&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${search}&type=video&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`
     )
     .then(function (response) {
@@ -48,4 +45,25 @@ server.post("/send", (req, res) => {
     });
 });
 
+server.get("/details/:id", (req, res) => {
+  const { id } = req.params;
+
+  axios
+    .get(
+      `https://www.googleapis.com/youtube/v3/videos?id=${id}&part=snippet,statistics&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`
+    )
+    .then(function (response) {
+      const snippets = {
+        title: response.data.items[0].snippet.title,
+        description: response.data.items[0].snippet.description,
+        view: response.data.items[0].statistics.viewCount,
+        like: response.data.items[0].statistics.likeCount,
+        deslike: response.data.items[0].statistics.dislikeCount,
+        id: response.data.items[0].id,
+        embed: `https://www.youtube.com/embed/${id}`,
+      };
+
+      return res.render("details.html", { detail: snippets });
+    });
+});
 server.listen(3000);
