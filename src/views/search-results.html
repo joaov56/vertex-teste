@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teste-Vertex</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/search-results.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form id="form" method="POST" action="/send">
+        <input id="search" name="search" placeholder="Pesquisa" />
+        <button type="submit">
+          <img src="/assets/search.svg" />
+        </button>
+      </form>
+    </div>
 
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/search-results.css">
-</head>
-<body>
-
-    <h1>resultados</h1>
     {% for video in videos %}
-        
-        <div class="card">
-            <img src= {{video.snippet.thumbnails}} alt="Thumb">
-            <h1>{{video.snippet.title}}</h1>
-            {% if video.snippet.description=== undefined %}
-                <p>{{video.snippet.description}}</p>
-            {% endif %}
-            
+    <div class="container_videos">
+      <div class="card">
+        <h1 hidden>{{video.id}}</h1>
+        <img src="{{video.snippet.thumbnails}}" alt="Thumb" />
+
+        <div class="text">
+          <h1>{{video.snippet.title}}</h1>
+          <p>{{video.snippet.description}}</p>
         </div>
-    {% endfor %}
-    
-</body>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
 </html>

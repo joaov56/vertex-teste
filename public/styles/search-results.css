@@ -1,20 +1,84 @@
- 
-  @keyframes levando {
-      
-    }
+* {
+  outline: 0;
+  box-sizing: border-box;
+}
 
+body {
+  background-color: #0e0a14ef;
 
-.container{
-    height: 100vh;
-    width: 100vw;
+  -webkit-font-smoothing: antialiase;
+}
 
+html {
+  font-family: "Roboto", sans-serif;
+}
 
-    top: 0 ;
+.container {
+  top: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
 
-    animation-name: levando;
-    animation-duration: 4s;
+  margin: 15px 0;
+}
+
+.container input {
+  height: 52px;
+  width: 400px;
+  border-radius: 7px 0 0 7px;
+  border: 0;
+  border-style: hidden;
+}
+
+#email::-webkit-input-placeholder {
+  text-align: center;
+}
+
+form {
+  display: flex;
+}
+
+form button {
+  width: 72px;
+  height: 52px;
+
+  background-color: #34cb79;
+  border: 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.container input {
+  height: 52px;
+  width: 400px;
+  border-radius: 7px 0 0 7px;
+  border: 0;
+  border-style: hidden;
+}
+
+.container_videos {
+  margin-top: 120px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.text {
+  display: inline-block;
+}
+
+.text h1 {
+  color: whitesmoke;
+  font-size: 20px;
+  margin-left: 15px;
+  max-width: 500px;
+}
+
+.text p {
+  margin-left: 15px;
+  color: white;
+  opacity: 0.5;
+  max-width: 500px;
 }
