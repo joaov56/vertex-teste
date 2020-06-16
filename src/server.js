@@ -1,69 +1,51 @@
-const express= require('express');
-const axios = require('axios')
+const express = require("express");
+const axios = require("axios");
 
-const server= express();
-
-
+const server = express();
 
 server.use(express.json());
 
 server.use(express.static("public"));
 
-server.use(express.urlencoded({extended: true}))
+server.use(express.urlencoded({ extended: true }));
 
+const ytkey = "AIzaSyAZXCvJRJIgbJyn1f-gRp3dW4E23oruE7A";
 
-
-
-const ytkey= 'AIzaSyAZXCvJRJIgbJyn1f-gRp3dW4E23oruE7A'
-
-
-
-const nunjucks = require('nunjucks')
+const nunjucks = require("nunjucks");
 nunjucks.configure("src/views", {
-    express: server,
-    noCache: true
+  express: server,
+  noCache: true,
 });
 
+server.get("/", async (req, res) => {
+  return res.render("index.html");
+});
 
-server.get('/', async (req, res)=>{
+server.post("/send", (req, res) => {
+  const search = req.body.search;
+  console.log(req.body);
+  console.log(search);
 
-    return res.render("index.html") 
-          
-})
+  const request = axios
+    .get(
+      // `https://www.googleapis.com/youtube/v3/search?part=id,snippet&q=${search}&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`
+      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${search}&type=video&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`
+    )
+    .then(function (response) {
+      const snippets = response.data.items.map((item) => ({
+        id: item.id.videoId,
+        snippet: {
+          title: item.snippet.title,
+          description: item.snippet.description,
+          thumbnails: item.snippet.thumbnails.medium.url,
+        },
+      }));
 
-
-server.post('/send',  (req,res)=>{
-    const search= req.body.search
-    const request = axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&pageToken=CAoQAA&q=${search}%20dog&type=video&key=AIzaSyCS65b-b2oEcoNm0UrshftNAlG-cYlHztA`)
-    .then(function(response){
-        
-        const pageToken= response.data.nextPageToken; 
-        
-        for(var i = 1; i<=10; i++){           
-            const title = [response.data.items[i].snippet.title]
-             
-
-            
-            console.log(title[0]);
-        }
-
-        
-        
-        
-
+      return res.render("search-results.html", { videos: snippets });
     })
-    .catch(error => {
-        console.log(error)
-      })
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
-    
-      console.log(request);
-      
-    
-
-    return res.render('search-results.html', )
-
-
-})
-
-server.listen(3000)
+server.listen(3000);

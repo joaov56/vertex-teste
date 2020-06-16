@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt_br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teste-Vertex</title>
 
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <form action="/send" method="POST">
-            <input id="search" placeholder="Pesquisa" /><br />
-            <button>
-                    <img src="/assets/search.svg">
-            </button>
-        </form>
+      <form id="form" method="POST" action="/send">
+        <input
+          id="search"
+          name="search"
+          placeholder="Pesquisa"
+          value="chaves"
+        />
+        <button type="submit">
+          <img src="/assets/search.svg" />
+        </button>
+      </form>
     </div>
-    
-</body>
+  </body>
 </html>
