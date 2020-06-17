@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste-Vertex</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/details.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
+  </head>
+</html>
+
+<body>
+  <div id="detail_page">
+    <div class="container">
+      <div class="video_like">
+        <h1 class="iframe">
+          <iframe
+            width="800"
+            height="400"
+            src="{{detail.embed}}"
+            class="video"
+            allowfullscreen="true"
+            allow-popups="false"
+          >
+          </iframe>
+        </h1>
+        <div class="likes">
+          <p class="itens">
+            <i class="large material-icons" style="color: grey;">insert_chart</i
+            >{{detail.view}} Visualizações
+          </p>
+          <p class="itens">
+            <i class="large material-icons" style="color: grey;">mood</i
+            >{{detail.like}} Likes
+          </p>
+          <p class="itens">
+            <i class="large material-icons" style="color: grey;">mood_bad</i
+            >{{detail.deslike}} Deslikes
+          </p>
+        </div>
+      </div>
+
+      <div class="title">
+        <h1>{{detail.title}}</h1>
+      </div>
+
+      <p class="description_text">
+        {{detail.description}}
+      </p>
+    </div>
+  </div>
+</body>

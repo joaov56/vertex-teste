@@ -9,29 +9,34 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/styles/search-results.css" />
+    <link rel="stylesheet" href="/styles/responsive.css" />
   </head>
   <body>
-    <div class="container">
-      <form id="form" method="POST" action="/send">
-        <input id="search" name="search" placeholder="Pesquisa" />
-        <button type="submit">
-          <img src="/assets/search.svg" />
-        </button>
-      </form>
-    </div>
-
-    {% for video in videos %}
-    <div class="container_videos">
-      <div class="card">
-        <h1 hidden>{{video.id}}</h1>
-        <img src="{{video.snippet.thumbnails}}" alt="Thumb" />
-
-        <div class="text">
-          <h1>{{video.snippet.title}}</h1>
-          <p>{{video.snippet.description}}</p>
-        </div>
+    <div id="page-search">
+      <div class="container">
+        <form id="form" method="POST" action="/send">
+          <input id="search" name="search" placeholder="Pesquisa" />
+          <button type="submit">
+            <img src="/assets/search.svg" />
+          </button>
+        </form>
       </div>
-      {% endfor %}
+
+      {% for video in videos %}
+      <div class="container_videos">
+        <a class="card" href="/details/{{video.id}}">
+          <h1 hidden>{{video.id}}</h1>
+          <img src="{{video.snippet.thumbnails}}" alt="Thumb" />
+
+          <div class="text">
+            <h1>{{video.snippet.title}}</h1>
+            <p>{{video.snippet.description}}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+      <a href="/next/{{nextToken}}/{{search}}" class="btn_next">NEXT PAGE</a>
     </div>
   </body>
 </html>

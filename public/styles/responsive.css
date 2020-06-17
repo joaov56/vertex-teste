@@ -1,0 +1,42 @@
+@media (max-width: 320px) {
+  #page-search .container form #search {
+    height: 40px;
+    width: 170px;
+  }
+  #page-search .container form button {
+    height: 40px;
+    width: 50px;
+  }
+
+  #page-search .container_videos .text h1 {
+    font-size: 12px;
+    width: 140px;
+  }
+
+  #page-search .container_videos img {
+    width: 120px;
+    height: 70px;
+    margin-left: 10px;
+  }
+
+  #page-search .container_videos .text p {
+    width: 120px;
+  }
+
+  #page-search a {
+    text-align: center;
+  }
+
+  #detail_page .container .video_like .iframe iframe {
+    width: 250px;
+    height: 190px;
+  }
+
+  #detail_page .description_text {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100;
+  }
+}
