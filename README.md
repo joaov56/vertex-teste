@@ -1,8 +1,8 @@
 ## Sobre
 
-O foi desenvolvido para uma avaliação para a empresa Vertex.
-Utilizando a API do youtube para receber os dados dos vídeos.
-API Rest desenvolvida em Node para lidar com as requisições do Front End.
+<p>O foi desenvolvido para uma avaliação para a empresa Vertex.</p>
+<p>Utilizando a API do youtube para receber os dados dos vídeos.</p>
+<p>API Rest desenvolvida em Node para lidar com as requisições do Front End.</p>
 
 ## Tecnologias
 
