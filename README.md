@@ -26,4 +26,7 @@ O projeto foi desenvolvido usando as seguintes tecnologias
 
     #Iniciar o projeto
     $ yarn start
+    
+    #Iniciar no navegador
+    localhost:3000
 ```
