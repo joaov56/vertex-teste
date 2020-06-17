@@ -9,7 +9,7 @@ API Rest desenvolvida em Node para lidar com as requisições do Front End.
 O projeto foi desenvolvido usando as seguintes tecnologias
 
 - HTML e CSS
-- Javscript
+- Javascript
 - NODEJS
 - Nunjucks
 - Axios
